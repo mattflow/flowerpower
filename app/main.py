@@ -7,7 +7,7 @@ app = FastAPI(title="flowerpower")
 
 
 @app.get("/", include_in_schema=False)
-async def redirect_to_docs():
+async def redirect_to_docs() -> RedirectResponse:
     return RedirectResponse(url="/docs")
 
 

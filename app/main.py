@@ -24,8 +24,10 @@ class HealthResponse(BaseModel):
 async def health_check() -> HealthResponse:
     return HealthResponse(status=Status.ok)
 
+
 class GreetingResponse(BaseModel):
     greeting: str
+
 
 @app.get("/greeting")
 async def greeting(name: str = "world") -> GreetingResponse:

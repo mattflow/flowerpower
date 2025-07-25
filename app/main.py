@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from enum import Enum
 from pydantic import BaseModel
+from core.greeting import get_greeting
 
 app = FastAPI(title="flowerpower")
 
@@ -22,3 +23,10 @@ class HealthResponse(BaseModel):
 @app.get("/health")
 async def health_check() -> HealthResponse:
     return HealthResponse(status=Status.ok)
+
+class GreetingResponse(BaseModel):
+    greeting: str
+
+@app.get("/greeting")
+async def greeting(name: str = "world") -> GreetingResponse:
+    return GreetingResponse(greeting=get_greeting(name))

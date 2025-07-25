@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "core",
     "fastapi[standard]>=0.116.1",
     "pydantic>=2.11.7",
 ]
@@ -14,3 +15,11 @@ dev = [
     "httpx>=0.28.1",
     "pytest>=8.4.1",
 ]
+
+[tool.uv.workspace]
+members = [
+    "packages/core",
+]
+
+[tool.uv.sources]
+core = { workspace = true }
